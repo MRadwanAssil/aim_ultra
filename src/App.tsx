@@ -3,7 +3,7 @@ import { PointerLockControls, Sky } from "@react-three/drei";
 import { useMemo, useState, useEffect } from "react";
 import * as THREE from "three";
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, update, get, set, push, onValue } from "firebase/database";
+import { getDatabase, ref, update, get, push, onValue } from "firebase/database";
 import "./App.css";
 
 type positionType = | number | THREE.Vector3 | [x: number, y: number, z: number]
@@ -139,6 +139,11 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
+type Player = {
+    name: string;
+    score: number;
+};
+
 export default function App() {
       const [name, setName] = useState<string | null>(null);
       const [inputName, setInputName] = useState("");
@@ -201,7 +206,7 @@ export default function App() {
       
               loadScoreboard();
           } catch (err) {
-              alert("Firebase save error:", err);
+              alert(`Firebase save error: ${err}`);
           }
       };
       
@@ -214,8 +219,8 @@ export default function App() {
                   const data = snapshot.val();
 
                   if (data) {
-                        const list = Object.values(data).sort(
-                              (a, b) => b.score - a.score,
+                        const list = Object.values(data as Record<string, Player>).sort(
+                            (a, b) => b.score - a.score
                         );
                         setPlayers(list);
                   } else {
