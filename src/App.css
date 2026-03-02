@@ -1,42 +1,243 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* ========================
+   GLOBAL
+======================== */
+
+body {
+    margin: 0px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #0f172a;
+    color: white;
+    padding: 0p;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* ========================
+   GAME AREA + HUD
+======================== */
+
+.game-area {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* HUD (Timer + Score) */
+.hud-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(12px);
+
+    padding: 12px 18px;
+    border-radius: 14px;
+
+    box-shadow: 0 0 25px rgba(0,0,0,0.4);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.timer-text {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
 }
 
-.card {
-  padding: 2em;
+.score-text {
+    font-size: 16px;
+    opacity: 0.85;
+    margin: 4px 0 0 0;
 }
 
-.read-the-docs {
-  color: #888;
+/* ========================
+   CROSSHAIR
+======================== */
+
+.crosshair {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 28px;
+    height: 28px;
+    pointer-events: none;
+    mix-blend-mode: difference;
+}
+
+.crosshair::before,
+.crosshair::after {
+    content: "";
+    position: absolute;
+    background: white;
+    box-shadow: 0 0 8px rgba(255,255,255,0.8);
+}
+
+.crosshair::before {
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 10px;
+    transform: translateX(-50%);
+}
+
+.crosshair::after {
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    height: 10px;
+    transform: translateX(-50%);
+}
+
+.crosshair span {
+    position: absolute;
+    background: white;
+    box-shadow: 0 0 8px rgba(255,255,255,0.8);
+}
+
+.crosshair span.left {
+    left: 0;
+    top: 50%;
+    width: 10px;
+    height: 2px;
+    transform: translateY(-50%);
+}
+
+.crosshair span.right {
+    right: 0;
+    top: 50%;
+    width: 10px;
+    height: 2px;
+    transform: translateY(-50%);
+}
+
+/* ========================
+   MENU SCREEN
+======================== */
+
+.main-container {
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+
+    background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
+}
+
+.username-container,
+.menu-container,
+.gameover-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    padding: 40px;
+    border-radius: 22px;
+
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.6),
+        inset 0 0 1px rgba(255,255,255,0.1);
+}
+
+/* ========================
+   INPUTS + BUTTONS
+======================== */
+
+.username-title {
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+.username-input {
+    padding: 12px;
+    width: 240px;
+
+    border-radius: 10px;
+    border: none;
+
+    background: rgba(255,255,255,0.08);
+    color: white;
+
+    outline: none;
+}
+
+.username-button,
+.start-button,
+.restart-button {
+    margin-top: 18px;
+    padding: 12px 26px;
+
+    border-radius: 12px;
+    border: none;
+
+    background: linear-gradient(135deg, #3b82f6, #6366f1);
+    color: white;
+
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.username-button:hover,
+.start-button:hover,
+.restart-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(99,102,241,0.6);
+}
+
+/* ========================
+   SCOREBOARD
+======================== */
+
+.scoreboard-title {
+    margin-top: 30px;
+    font-size: 22px;
+}
+
+.scoreboard-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.scoreboard-item {
+    padding: 10px 16px;
+    margin: 6px 0;
+
+    border-radius: 10px;
+
+    background: rgba(255,255,255,0.06);
+    transition: 0.2s;
+}
+
+.scoreboard-item:hover {
+    background: rgba(255,255,255,0.12);
+    transform: scale(1.03);
+}
+
+/* ========================
+   GAME OVER
+======================== */
+
+.gameover-title {
+    font-size: 42px;
+    margin-bottom: 10px;
+
+    background: linear-gradient(90deg,#3b82f6,#6366f1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.final-score {
+    font-size: 24px;
+}
+
+/* ========================
+   LOADING
+======================== */
+
+.loading-text {
+    opacity: 0.7;
 }
