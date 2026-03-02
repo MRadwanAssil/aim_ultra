@@ -38,7 +38,7 @@ const createCheckerTexture = () => {
       const GRID_SIZE: number = 8;
       const CANVAS_SIZE: number = 512;
       const CHECKER_COLORS: string[] = ["#909090", "#AAAAAA"];
-      const CHECKER_REPEAT: number = 25;
+      const CHECKER_REPEAT: number = 100;
 
       const canvas = document.createElement("canvas");
       canvas.width = CANVAS_SIZE;
