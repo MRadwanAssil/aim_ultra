@@ -1,17 +1,29 @@
-/* ========================
-   GLOBAL
-======================== */
+/* ==================================================
+   ROOT TOKENS
+================================================== */
 
 :root {
-    --bg-main: #f4f7fb;
-    --text-main: #0f172a;
+    --bg-main: #f1f5f9;
+    --bg-soft: #ffffff;
 
-    --card-bg: rgba(255,255,255,0.85);
-    --card-border: rgba(255,255,255,0.6);
+    --text-main: #0f172a;
+    --text-muted: #64748b;
 
     --primary: #6366f1;
-    --primary-dark: #4f46e5;
+    --primary-soft: rgba(99,102,241,0.12);
+
+    --gold: #fbbf24;
+    --silver: #cbd5e1;
+    --bronze: #fb923c;
+
+    --radius-lg: 28px;
+    --radius-md: 18px;
+    --radius-sm: 12px;
 }
+
+/* ==================================================
+   BASE
+================================================== */
 
 * {
     box-sizing: border-box;
@@ -25,43 +37,47 @@ body {
         "Segoe UI",
         sans-serif;
 
-    background: var(--bg-main);
-    color: var(--text-main);
+    background: radial-gradient(
+        circle at 50% 0%,
+        #ffffff 0%,
+        var(--bg-main) 75%
+    );
 
+    color: var(--text-main);
     overflow: hidden;
 }
 
-/* ========================
+/* ==================================================
    GAME AREA
-======================== */
+================================================== */
 
 .game-area {
     width: 100vw;
     height: 100vh;
-
     position: relative;
 }
 
-/* ========================
+/* ==================================================
    HUD
-======================== */
+================================================== */
 
 .hud-container {
     position: absolute;
-    top: max(16px, 3vh);
-    left: max(16px, 3vw);
+    top: 3vh;
+    left: 3vw;
 
-    padding: clamp(12px, 2vw, 18px) clamp(16px, 2vw, 24px);
+    padding: clamp(14px, 2vw, 20px)
+             clamp(18px, 2.5vw, 26px);
 
-    border-radius: 20px;
+    border-radius: var(--radius-md);
 
-    background: var(--card-bg);
+    background: rgba(255,255,255,0.85);
     backdrop-filter: blur(30px);
 
-    border: 1px solid var(--card-border);
+    border: 1px solid rgba(255,255,255,0.6);
 
     box-shadow:
-        0 12px 40px rgba(15,23,42,0.05);
+        0 10px 40px rgba(15,23,42,0.05);
 }
 
 .timer-text {
@@ -70,26 +86,25 @@ body {
 }
 
 .score-text {
-    font-size: clamp(13px, 1.5vw, 16px);
-    opacity: 0.7;
+    font-size: clamp(14px, 1.5vw, 16px);
+    color: var(--text-muted);
 }
 
-/* ========================
+/* ==================================================
    CROSSHAIR
-======================== */
+================================================== */
 
 .crosshair {
     position: absolute;
     top: 50%;
     left: 50%;
-
-    width: 28px;
-    height: 28px;
-
     transform: translate(-50%, -50%);
-    pointer-events: none;
+
+    width: 30px;
+    height: 30px;
 
     opacity: 0.5;
+    pointer-events: none;
 }
 
 .crosshair::before,
@@ -100,22 +115,18 @@ body {
 }
 
 .crosshair::before {
+    width: 2px;
+    height: 10px;
     left: 50%;
     top: 0;
-
-    width: 2px;
-    height: 9px;
-
     transform: translateX(-50%);
 }
 
 .crosshair::after {
+    width: 2px;
+    height: 10px;
     left: 50%;
     bottom: 0;
-
-    width: 2px;
-    height: 9px;
-
     transform: translateX(-50%);
 }
 
@@ -125,40 +136,33 @@ body {
 }
 
 .crosshair span.left {
+    width: 10px;
+    height: 2px;
     left: 0;
     top: 50%;
-
-    width: 9px;
-    height: 2px;
-
     transform: translateY(-50%);
 }
 
 .crosshair span.right {
+    width: 10px;
+    height: 2px;
     right: 0;
     top: 50%;
-
-    width: 9px;
-    height: 2px;
-
     transform: translateY(-50%);
 }
 
-/* ========================
-   BACKGROUND LAYER
-======================== */
+/* ==================================================
+   MAIN CONTAINER
+================================================== */
 
 .main-container {
     width: 100vw;
     height: 100vh;
-
-    background:
-        radial-gradient(circle at 50% 0%, #ffffff 0%, #e9eff7 75%);
 }
 
-/* ========================
-   CARDS
-======================== */
+/* ==================================================
+   CARD SYSTEM
+================================================== */
 
 .username-container,
 .menu-container,
@@ -166,45 +170,42 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-
     transform: translate(-50%, -50%);
 
-    width: min(420px, 92vw);
+    width: min(460px, 92vw);
 
-    padding: clamp(28px, 6vw, 52px);
+    padding: clamp(32px, 5vw, 56px);
 
-    border-radius: 28px;
+    border-radius: var(--radius-lg);
 
-    background: var(--card-bg);
+    background: rgba(255,255,255,0.9);
     backdrop-filter: blur(35px);
 
-    border: 1px solid var(--card-border);
+    border: 1px solid rgba(255,255,255,0.7);
 
     box-shadow:
-        0 30px 90px rgba(15,23,42,0.08);
+        0 30px 100px rgba(15,23,42,0.08);
 }
 
-/* ========================
-   INPUTS
-======================== */
+/* ==================================================
+   INPUT
+================================================== */
 
 .username-title {
-    font-size: clamp(22px, 3vw, 30px);
-    margin-bottom: 28px;
+    font-size: clamp(24px, 3vw, 30px);
     font-weight: 600;
+    margin-bottom: 28px;
 }
 
 .username-input {
     width: 100%;
-
     padding: 14px 16px;
 
-    border-radius: 16px;
+    border-radius: var(--radius-sm);
     border: 1px solid rgba(15,23,42,0.08);
 
     font-size: 16px;
-
-    background: white;
+    background: var(--bg-soft);
 
     transition: 0.25s ease;
     outline: none;
@@ -212,32 +213,33 @@ body {
 
 .username-input:focus {
     border-color: var(--primary);
-    box-shadow: 0 0 0 5px rgba(99,102,241,0.12);
+    box-shadow: 0 0 0 5px var(--primary-soft);
 }
 
-/* ========================
-   BUTTONS
-======================== */
+/* ==================================================
+   BUTTON
+================================================== */
 
 .username-button,
 .start-button,
 .restart-button {
     width: 100%;
+    margin-top: 24px;
 
-    margin-top: 22px;
     padding: 14px;
 
-    border-radius: 16px;
+    border-radius: var(--radius-sm);
     border: none;
 
     background: linear-gradient(
         135deg,
         var(--primary),
-        var(--primary-dark)
+        #4f46e5
     );
 
     color: white;
     font-weight: 600;
+    font-size: 15px;
 
     cursor: pointer;
 
@@ -250,16 +252,15 @@ body {
 .start-button:hover,
 .restart-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 18px 40px rgba(99,102,241,0.3);
+    box-shadow: 0 16px 40px rgba(99,102,241,0.3);
 }
 
-/* ========================
+/* ==================================================
    SCOREBOARD
-======================== */
+================================================== */
 
 .scoreboard-title {
-    margin-top: 38px;
-
+    margin-top: 42px;
     font-size: clamp(20px, 2.5vw, 26px);
     font-weight: 600;
 }
@@ -268,13 +269,28 @@ body {
     list-style: none;
     padding: 0;
     margin-top: 20px;
+
+    max-height: 260px;
+    overflow-y: auto;
 }
+
+/* scrollbar */
+.scoreboard-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.scoreboard-list::-webkit-scrollbar-thumb {
+    background: rgba(15,23,42,0.2);
+    border-radius: 10px;
+}
+
+/* normal items */
 
 .scoreboard-item {
     padding: 14px 18px;
     margin: 10px 0;
 
-    border-radius: 14px;
+    border-radius: var(--radius-sm);
 
     background: rgba(15,23,42,0.04);
 
@@ -282,51 +298,60 @@ body {
 }
 
 .scoreboard-item:hover {
-    background: rgba(99,102,241,0.08);
     transform: translateX(6px);
+    background: var(--primary-soft);
 }
 
-/* ========================
+/* ==================================================
+   TOP 3 SPECIAL
+================================================== */
+
+.scoreboard-item:nth-child(1) {
+    background: linear-gradient(135deg,var(--gold),#f59e0b);
+    color: #1e293b;
+    font-weight: 600;
+}
+
+.scoreboard-item:nth-child(2) {
+    background: linear-gradient(135deg,var(--silver),#94a3b8);
+    color: #1e293b;
+    font-weight: 600;
+}
+
+.scoreboard-item:nth-child(3) {
+    background: linear-gradient(135deg,var(--bronze),#f97316);
+    color: white;
+    font-weight: 600;
+}
+
+/* ==================================================
    GAME OVER
-======================== */
+================================================== */
 
 .gameover-title {
-    font-size: clamp(36px, 6vw, 52px);
+    font-size: clamp(38px, 6vw, 54px);
+    margin-bottom: 16px;
 
-    margin-bottom: 18px;
+    background: linear-gradient(
+        90deg,
+        #6366f1,
+        #8b5cf6
+    );
 
-    background: linear-gradient(90deg,#6366f1,#8b5cf6);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .final-score {
     font-size: clamp(20px, 3vw, 28px);
-    opacity: 0.75;
+    color: var(--text-muted);
 }
 
-/* ========================
+/* ==================================================
    LOADING
-======================== */
+================================================== */
 
 .loading-text {
     font-size: 15px;
-    opacity: 0.6;
-}
-
-/* ========================
-   MOBILE OPTIMIZATION
-======================== */
-
-@media (max-width: 768px) {
-    .hud-container {
-        top: 12px;
-        left: 12px;
-    }
-
-    .username-container,
-    .menu-container,
-    .gameover-container {
-        padding: 32px 24px;
-    }
+    color: var(--text-muted);
 }
