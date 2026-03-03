@@ -99,10 +99,13 @@ function GameArea({ setShoots }: { setShoots: React.Dispatch<React.SetStateActio
 
       return (
             <div className="game-area">
-                  <Canvas shadows gl={{ antialias: true }} camera={{ fov: CAMERA_FOV, far: 3, position: CAMERA_POSITION }}>
+             <Canvas shadows gl={{ antialias: true }} camera={{ fov: CAMERA_FOV, far: 3, position: CAMERA_POSITION }}>
                         <Sky distance={450000} sunPosition={[100, 20, 100]} />
 
-                    
+                        <directionalLight position={[100, 20, 100]} intensity={1} />
+                        <directionalLight position={[50, 100, 50]} intensity={2} castShadow />
+                        <directionalLight position={[80, 160, 40]} intensity={2.2} castShadow />
+
                         <hemisphereLight intensity={0.35} />
 
                         <PointerLockControls />
