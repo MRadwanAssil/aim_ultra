@@ -26,7 +26,7 @@ function DrawCircles({ circlesList, handleCirclesClick }: { circlesList: boolean
             const position: positionType = [(col - COL_OFFSET) * SPACING, (row - 2 - ROW_OFFSET) * SPACING, Z_POSITION];
 
             return (
-                  <mesh castShadow receiveShadow key={i} position={position} onClick={() => handleCirclesClick(i)}>
+                  <mesh receiveShadow key={i} position={position} onClick={() => handleCirclesClick(i)}>
                         <sphereGeometry args={[SPHERE_RADIUS, SPHERE_SEGMENTS, SPHERE_SEGMENTS]} />
                         <meshStandardMaterial color="red" />
                   </mesh>
@@ -35,7 +35,7 @@ function DrawCircles({ circlesList, handleCirclesClick }: { circlesList: boolean
 }
 
 const createCheckerTexture = () => {
-      const GRID_SIZE: number = 8;
+      const GRID_SIZE: number = 1;
       const CANVAS_SIZE: number = 512;
       const CHECKER_COLORS: string[] = ["#909090", "#AAAAAA"];
       const CHECKER_REPEAT: number = 5;
@@ -102,10 +102,7 @@ function GameArea({ setShoots }: { setShoots: React.Dispatch<React.SetStateActio
                   <Canvas shadows gl={{ antialias: true }} camera={{ fov: CAMERA_FOV, far: 3, position: CAMERA_POSITION }}>
                         <Sky distance={450000} sunPosition={[100, 20, 100]} />
 
-                        <directionalLight position={[100, 20, 100]} intensity={1} />
-                        <directionalLight position={[50, 100, 50]} intensity={2} castShadow />
-                        <directionalLight position={[80, 160, 40]} intensity={2.2} castShadow />
-
+                    
                         <hemisphereLight intensity={0.35} />
 
                         <PointerLockControls />
