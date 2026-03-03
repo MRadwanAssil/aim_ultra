@@ -26,7 +26,7 @@ function DrawCircles({ circlesList, handleCirclesClick }: { circlesList: boolean
             const position: positionType = [(col - COL_OFFSET) * SPACING, (row - 2 - ROW_OFFSET) * SPACING, Z_POSITION];
 
             return (
-                  <mesh castshadow receiveShadow key={i} position={position} onClick={() => handleCirclesClick(i)}>
+                  <mesh castShadow receiveShadow key={i} position={position} onClick={() => handleCirclesClick(i)}>
                         <sphereGeometry args={[SPHERE_RADIUS, SPHERE_SEGMENTS, SPHERE_SEGMENTS]} />
                         <meshStandardMaterial color="red" />
                   </mesh>
