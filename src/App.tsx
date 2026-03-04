@@ -104,11 +104,18 @@ const [circlesList, setCirclesList] = useState(() => {
          <Canvas shadows gl={{ antialias: true }} camera={{ fov: CAMERA_FOV, far: 4, position: CAMERA_POSITION }}>  
                     <Sky distance={450000} sunPosition={[100, 20, 100]} />  
 
-                
-                
+                    <directionalLight position={[100, 20, 100]} intensity={1} />  
+                    <directionalLight position={[50, 100, 50]} intensity={2} castShadow />  
+                    <directionalLight position={[80, 160, 40]} intensity={2.2} castShadow />  
+
+                    <hemisphereLight intensity={0.35} />  
+
                     <PointerLockControls />  
 
-     
+                    <mesh  rotation={[-Math.PI / 2, 0, 0]} position={[0, PLANE_POSITION_Y, 0]}>  
+                          <planeGeometry args={[50, 50, 1, 1]} />  
+                          <meshStandardMaterial map={checkerTexture} roughness={0.95} metalness={0.05} />  
+                    </mesh>  
 
                     <DrawCircles circlesList={circlesList} handleCirclesClick={handleCirclesClick} />  
               </Canvas>  
