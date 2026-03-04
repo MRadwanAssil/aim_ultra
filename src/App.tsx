@@ -26,7 +26,7 @@ return circlesList.map((isShown: boolean, i: number) => {
         const position: positionType = [(col - COL_OFFSET) * SPACING, (row - 2 - ROW_OFFSET) * SPACING, Z_POSITION];  
 
         return (  
-              <mesh castShadow receiveShadow key={i} position={position} onClick={() => handleCirclesClick(i)}>  
+              <mesh receiveShadow key={i} position={position} onClick={() => handleCirclesClick(i)}>  
                     <sphereGeometry args={[SPHERE_RADIUS, SPHERE_SEGMENTS, SPHERE_SEGMENTS]} />  
                     <meshStandardMaterial color="red" />  
               </mesh>  
@@ -102,20 +102,10 @@ const [circlesList, setCirclesList] = useState(() => {
   return (  
         <div className="game-area">  
          <Canvas shadows gl={{ antialias: true }} camera={{ fov: CAMERA_FOV, far: 4, position: CAMERA_POSITION }}>  
-                    <Sky distance={450000} sunPosition={[100, 20, 100]} />  
-
-                    <directionalLight position={[100, 20, 100]} intensity={1} />  
-                    <directionalLight position={[50, 100, 50]} intensity={2} castShadow />  
-                    <directionalLight position={[80, 160, 40]} intensity={2.2} castShadow />  
-
+                   
                     <hemisphereLight intensity={0.35} />  
 
                     <PointerLockControls />  
-
-                    <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]} position={[0, PLANE_POSITION_Y, 0]}>  
-                          <planeGeometry args={[50, 50, 1, 1]} />  
-                          <meshStandardMaterial map={checkerTexture} roughness={0.95} metalness={0.05} />  
-                    </mesh>  
 
                     <DrawCircles circlesList={circlesList} handleCirclesClick={handleCirclesClick} />  
               </Canvas>  
