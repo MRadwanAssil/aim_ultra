@@ -64,7 +64,8 @@ const createCheckerTexture = (repeatValue: number) => {
   return texture;
 };
 
-/* ================= DRAW CIRCLES ================= */
+/* ================= DRAW CIRCLESf
+================= */
 
 function DrawCircles({
   circlesList,
