@@ -168,18 +168,7 @@ function GameArea({
 
         <PointerLockControls />
 
-        <mesh
-          receiveShadow={settings.shadows}
-          rotation={[-Math.PI / 2, 0, 0]}
-          position={[0, PLANE_POSITION_Y, 0]}
-        >
-          <planeGeometry args={[50, 50]} />
-          <meshStandardMaterial
-            map={checkerTexture || undefined}
-            roughness={0.95}
-            metalness={0.05}
-          />
-        </mesh>
+   
 
         <DrawCircles
           circlesList={circlesList}
