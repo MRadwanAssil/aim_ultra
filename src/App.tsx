@@ -102,10 +102,13 @@ const [circlesList, setCirclesList] = useState(() => {
   return (  
         <div className="game-area">  
          <Canvas shadows gl={{ antialias: true }} camera={{ fov: CAMERA_FOV, far: 4, position: CAMERA_POSITION }}>  
-                   
-                    <hemisphereLight intensity={0.35} />  
+                    <Sky distance={450000} sunPosition={[100, 20, 100]} />  
 
+                
+                
                     <PointerLockControls />  
+
+     
 
                     <DrawCircles circlesList={circlesList} handleCirclesClick={handleCirclesClick} />  
               </Canvas>  
