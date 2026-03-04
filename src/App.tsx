@@ -97,7 +97,7 @@ function DrawCircles({
 
     return (
       <mesh
-        castShadow={shadows}
+        
         receiveShadow={shadows}
         key={i}
         position={position}
@@ -166,22 +166,9 @@ function GameArea({
       >
         <Sky distance={450000} sunPosition={[100, 20, 100]} />
 
-        <directionalLight
-          position={[100, 20, 100]}
-          intensity={1}
-          castShadow={settings.shadows}
-        />
-        <directionalLight
-          position={[50, 100, 50]}
-          intensity={2}
-          castShadow={settings.shadows}
-        />
-        <hemisphereLight intensity={0.35} />
-
         <PointerLockControls />
 
         <mesh
-          receiveShadow={settings.shadows}
           rotation={[-Math.PI / 2, 0, 0]}
           position={[0, PLANE_POSITION_Y, 0]}
         >
