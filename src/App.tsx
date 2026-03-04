@@ -103,7 +103,7 @@ const [circlesList, setCirclesList] = useState(() => {
         <div className="game-area">  
          <Canvas
   shadows
-  dpr={0.1}
+  dpr={1}
   gl={{ antialias: false }}
   camera={{ fov: CAMERA_FOV, far: 4, position: CAMERA_POSITION }}
 >
