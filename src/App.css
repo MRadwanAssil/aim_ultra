@@ -100,8 +100,8 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
 
-    width: 30px;
-    height: 30px;
+    width: 3px;
+    height: 3px;
 
     opacity: 0.5;
     pointer-events: none;
@@ -115,16 +115,16 @@ body {
 }
 
 .crosshair::before {
-    width: 2px;
-    height: 10px;
+    width: 3px;
+    height: 3px;
     left: 50%;
     top: 0;
     transform: translateX(-50%);
 }
 
 .crosshair::after {
-    width: 2px;
-    height: 10px;
+    width: 3px;
+    height: 3px;
     left: 50%;
     bottom: 0;
     transform: translateX(-50%);
@@ -136,16 +136,16 @@ body {
 }
 
 .crosshair span.left {
-    width: 10px;
-    height: 2px;
+    width: 3px;
+    height: 3px;
     left: 0;
     top: 50%;
     transform: translateY(-50%);
 }
 
 .crosshair span.right {
-    width: 10px;
-    height: 2px;
+    width: 3px;
+    height: 3px;
     right: 0;
     top: 50%;
     transform: translateY(-50%);
