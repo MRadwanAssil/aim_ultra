@@ -169,6 +169,7 @@ function GameArea({
         <PointerLockControls />
 
         <mesh
+          receiveShadow={settings.shadows}
           rotation={[-Math.PI / 2, 0, 0]}
           position={[0, PLANE_POSITION_Y, 0]}
         >
